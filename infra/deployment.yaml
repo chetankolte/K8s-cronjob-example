@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cronjobexample
+spec:
+  selector:
+    matchLabels:
+      app: cronjobexample
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: cronjobexample
+    spec:
+      containers:
+        - name: cronjobexample
+          image: kubernetes-cronexample-app:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080

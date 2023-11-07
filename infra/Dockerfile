@@ -1,0 +1,5 @@
+FROM amazoncorretto:17-alpine-jdk
+WORKDIR /app
+COPY build/libs/cron-example-0.0.1-SNAPSHOT.jar /app/
+EXPOSE 8080
+CMD ["java", "-jar", "-Dspring.main.web-application-type=SERVLET", "cron-example-0.0.1-SNAPSHOT.jar"]

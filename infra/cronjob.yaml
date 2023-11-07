@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: testcronjob
+spec:
+  concurrencyPolicy: Forbid
+  failedJobsHistoryLimit: 1
+  successfulJobsHistoryLimit: 1
+  schedule: "*/2 * * * *"
+  jobTemplate:
+    metadata:
+      name: cronjobexample-job
+    spec:
+      template:
+        spec:
+          containers:
+            - name: cronjobexample-jobcontainer
+              image: kubernetes-cronexample-cli:latest
+              imagePullPolicy: Never
+          restartPolicy: OnFailure
